@@ -1,0 +1,23 @@
+{
+  "name": "no-code",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "npx webpack --watch --progress --mode development",
+    "watch-scss": "npx sass --watch --no-source-map src/css/index.scss dist/css/index.css",
+    "build": "npx webpack build --mode production",
+    "build-scss": "npx sass --no-source-map src/css/index.scss dist/css/index.css"
+  },
+  "dependencies": {
+    "alpinejs": "^3.10.3"
+  },
+  "devDependencies": {
+    "css-loader": "^6.7.1",
+    "path": "^0.12.7",
+    "sass": "^1.54.4",
+    "sass-loader": "^13.0.2",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
