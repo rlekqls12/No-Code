@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>No Code</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png" />
+    <link rel="stylesheet" type="text/css" href="./css/reset.min.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div
+        x-data="viewport"
+        :class="{ focus: $store.global.focus === 'viewport' }"
+        class="viewport"
+        @mousedown="onFocus"
+      >
+        It's viewport<br />
+        Focus: <span x-text="$store.global.focus"></span>
+      </div>
+      <div
+        x-data="controller"
+        x-ref="controller"
+        :class="{ focus: $store.global.focus === 'controller', collapse: collapse }"
+        :style="layer"
+        class="controller"
+        @mousedown="onFocus"
+      >
+        <div class="header" @mousedown="onDragStart">
+          <span>Controller</span>
+          <span x-text="collapse ? '▼' : '▲'" class="collapse" @click="onCollapseToggle"></span>
+        </div>
+        <div x-show="collapse === false" class="contents">It's Controller</div>
+      </div>
+    </div>
+    <!-- Script -->
+    <script>
+      function onLoadFailed() {
+        document.body.innerHTML = '<span style="font-size: 64px; color: red">Build it</span>'
+      }
+    </script>
+    <script src="../dist/js/index.js" onerror="onLoadFailed()"></script>
+  </body>
+</html>
